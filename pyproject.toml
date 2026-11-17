@@ -24,3 +24,6 @@ testpaths = ["tests"]
 
 [tool.ruff]
 line-length = 110
+
+[tool.setuptools.package-data]
+samaratan = ["ui/*"]

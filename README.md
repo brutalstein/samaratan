@@ -8,7 +8,7 @@ Samaratan is building toward a browser-based studio that lets non-programmers de
 
 | Capability | Status |
 |---|---|
-| FastAPI developer studio with responsive browser UI | Implemented |
+| Director’s Desk cinematic editorial interface, story inspection, archive, provider status | Implemented |
 | Versioned `GamePlan` with validated branching narrative graph | Implemented |
 | Deterministic no-network demo director | Implemented |
 | Claude Code CLI / Codex CLI agent adapters | Implemented; real account testing required |
@@ -36,6 +36,8 @@ For actual model-directed story generation, install the official `codex` or `cla
 ### Native Windows `.exe`
 
 Install Godot 4 and its matching **Windows Desktop export templates on the build machine**; configure `SAMARATAN_GODOT_BINARY` if `godot` is not on `PATH`. Then check the **Export Windows .exe** option. A successful result exposes an executable download. Without Godot, requesting an `.exe` returns an explicit failure rather than a fake download. Source generation still works with no engine installed. The commercial design moves build workers off the customer's machine.
+
+The interface uses a custom self-hosted design system with responsive layouts, reduced-motion support, and no JavaScript UI framework. The hero illustration is clearly labelled concept art; it is not a game render. The UI is bundled as Python package data under `samaratan/ui`.
 
 ## Tests
 

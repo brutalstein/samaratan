@@ -166,7 +166,15 @@ def test_health_endpoint(client):
 
 
 def test_frontend_loaded(client):
-    assert "Your story" in client.get("/").text
+    assert "Every great game" in client.get("/").text
+    assert "Director's desk" in client.get("/").text
+    assert "production-overlay" in client.get("/").text
+    assert client.get("/assets/styles.css").status_code == 200
+    assert "--accent" in client.get("/assets/styles.css").text
+    assert client.get("/assets/app.js").status_code == 200
+    assert "startProduction" in client.get("/assets/app.js").text
+    assert client.get("/assets/noir-scene.svg").status_code == 200
+    assert client.get("/assets/../../samaratan/store.py").status_code == 404
 
 
 def test_capabilities_reflect_absent_engine(client):
@@ -229,3 +237,52 @@ def test_bad_store_artifact_path_refused(tmp_path):
     store.update(job["id"], "succeeded", source_zip="../../outside.zip")
     with pytest.raises(NotFound):
         store.output(job["id"], "source_zip")
+
+
+def test_job_archive_is_real_and_ordered(client):
+    assert client.get("/api/jobs").json() == {"jobs": []}
+    first = client.post("/api/jobs", json={"prompt": "An underwater detective story", "provider": "demo"}).json()
+    second = client.post("/api/jobs", json={"prompt": "A midnight thriller detective story", "provider": "demo"}).json()
+    jobs = client.get("/api/jobs").json()["jobs"]
+    assert [job["id"] for job in jobs] == [second["id"], first["id"]]
+    assert jobs[0]["prompt_preview"] == "A midnight thriller detective story"
+    assert all("prompt" not in job for job in jobs)
+
+
+def test_real_plan_inspection_endpoint(client):
+    response = client.post("/api/jobs", json={"prompt": "A detective returns to the coast", "provider": "demo"})
+    job_id = response.json()["id"]
+    plan = client.get(f"/api/jobs/{job_id}/plan")
+    assert plan.status_code == 200
+    assert plan.json()["title"] == "Midnight Evidence"
+    assert len(plan.json()["scenes"]) == 4
+    assert plan.json()["start_scene"] == "arrival"
+
+
+def test_plan_not_exposed_for_incomplete_job(client):
+    job_id = client.app.state.store.create("demo", "Still waiting", False)["id"]
+    assert client.get(f"/api/jobs/{job_id}/plan").status_code == 404
+    assert client.get("/api/jobs/" + "f" * 32 + "/plan").status_code == 404
+
+
+def test_plan_symlink_refused(tmp_path):
+    store = Store(tmp_path)
+    job_id = store.create("demo", "Safe prompt", False)["id"]
+    workdir = store.directory(job_id)
+    out = tmp_path / "external-game-plan.json"
+    out.write_text('{"evil":true}')
+    try:
+        (workdir / "game-plan.json").symlink_to(out)
+    except (OSError, NotImplementedError):
+        pytest.skip("Symlinks unavailable")
+    store.update(job_id, "succeeded", title="Insecure")
+    with pytest.raises(NotFound):
+        store.plan(job_id)
+
+
+def test_recent_job_limit_validation(tmp_path):
+    store = Store(tmp_path)
+    with pytest.raises(ValueError, match="limit"):
+        store.recent(101)
+    with pytest.raises(ValueError, match="limit"):
+        store.recent(0)

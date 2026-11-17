@@ -1,0 +1,33 @@
+<svg width="1200" height="900" viewBox="0 0 1200 900" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Illustrated midnight detective street, concept artwork">
+<defs>
+<linearGradient id="sky" x1="550" y1="0" x2="650" y2="900" gradientUnits="userSpaceOnUse"><stop stop-color="#1D3538"/><stop offset=".53" stop-color="#293B3C"/><stop offset="1" stop-color="#0A1519"/></linearGradient>
+<linearGradient id="road" x1="490" y1="600" x2="550" y2="910" gradientUnits="userSpaceOnUse"><stop stop-color="#182E32"/><stop offset="1" stop-color="#080E13"/></linearGradient>
+<linearGradient id="building" x1="430" y1="160" x2="650" y2="700" gradientUnits="userSpaceOnUse"><stop stop-color="#30464A"/><stop offset="1" stop-color="#101D25"/></linearGradient>
+<linearGradient id="lamp" x1="580" y1="300" x2="580" y2="900" gradientUnits="userSpaceOnUse"><stop stop-color="#E2B77D" stop-opacity=".7"/><stop offset="1" stop-color="#E2B77D" stop-opacity="0"/></linearGradient>
+<linearGradient id="foreground" x1="0" y1="0" x2="1200" y2="0" gradientUnits="userSpaceOnUse"><stop stop-color="#0B141C" stop-opacity=".7"/><stop offset=".48" stop-color="#0C1219" stop-opacity="0"/><stop offset="1" stop-color="#071016" stop-opacity=".55"/></linearGradient>
+<radialGradient id="glow"><stop stop-color="#FFD69D" stop-opacity=".48"/><stop offset=".36" stop-color="#EFBF88" stop-opacity=".2"/><stop offset="1" stop-color="#EFBF88" stop-opacity="0"/></radialGradient>
+<filter id="noise"><feTurbulence type="fractalNoise" baseFrequency=".7" numOctaves="3" seed="5" stitchTiles="stitch"/><feColorMatrix type="saturate" values="0"/><feComponentTransfer><feFuncA type="linear" slope=".075"/></feComponentTransfer></filter>
+<filter id="fog"><feGaussianBlur stdDeviation="18"/></filter>
+</defs>
+<rect width="1200" height="900" fill="url(#sky)"/>
+<circle cx="855" cy="186" r="53" fill="#C9D4CC" opacity=".18"/>
+<circle cx="855" cy="186" r="95" fill="#B3C6BE" opacity=".03"/>
+<path d="M0 315 100 295 130 190 198 182 230 325 292 314 292 178 405 178 405 355 478 332 478 241 579 241 579 421 658 397 658 262 744 262 744 412 830 363 830 242 951 242 951 325 1107 310 1107 233 1200 225V900H0V315Z" fill="#16272D"/>
+<path d="M-24 238 168 225 177 620 247 585 246 97 430 108 445 604 512 594 505 210 626 208 627 591 767 601 768 357 899 344 902 594 994 581 995 131 1240 106V900H-24V238Z" fill="url(#building)"/>
+<path d="M-30 275 165 266V900H-30V275Z" fill="#12232A"/><path d="M246 100 430 112V678H244V100Z" fill="#25363B"/><path d="M994 134 1240 109V900H994V134Z" fill="#13252D"/>
+<g opacity=".64" fill="#D1B590"><rect x="282" y="164" width="28" height="55"/><rect x="340" y="167" width="28" height="55"/><rect x="282" y="259" width="28" height="55"/><rect x="340" y="259" width="28" height="55"/><rect x="282" y="361" width="28" height="55"/><rect x="340" y="361" width="28" height="55"/><rect x="1019" y="210" width="31" height="56"/><rect x="1092" y="196" width="31" height="56"/></g>
+<g opacity=".28" fill="#93B7B4"><rect x="26" y="329" width="22" height="41"/><rect x="89" y="330" width="22" height="41"/><rect x="26" y="435" width="22" height="41"/><rect x="89" y="435" width="22" height="41"/><rect x="540" y="268" width="18" height="28"/><rect x="540" y="345" width="18" height="28"/><rect x="809" y="395" width="28" height="45"/><rect x="846" y="395" width="28" height="45"/><rect x="1047" y="349" width="31" height="50"/><rect x="1118" y="345" width="31" height="50"/></g>
+<path d="m0 669 487-100 229 5 484 79V900H0V669Z" fill="url(#road)"/>
+<path d="m470 578-318 322H0V819l445-247 25 6Z" fill="#0C1A21"/><path d="m715 572 485 174v154H961L700 580Z" fill="#111E24"/>
+<path d="M580 602 500 900" stroke="#84918A" stroke-opacity=".17" stroke-width="2"/><path d="m672 601 124 299" stroke="#84918A" stroke-opacity=".12" stroke-width="2"/>
+<path d="M570 660 463 900" stroke="#E4AD6C" stroke-opacity=".12" stroke-width="7"/><path d="m683 664 130 236" stroke="#E5AC6D" stroke-opacity=".08" stroke-width="8"/>
+<ellipse cx="585" cy="689" rx="220" ry="21" fill="#C5AC85" opacity=".06" filter="url(#fog)"/>
+<path d="M764 332V648" stroke="#141C20" stroke-width="13"/><path d="M765 338h-31" stroke="#141C20" stroke-width="8" stroke-linecap="round"/><path d="M734 339v21" stroke="#141C20" stroke-width="7"/><rect x="715" y="349" width="37" height="23" rx="7" fill="#EAC396"/><ellipse cx="734" cy="382" rx="162" ry="170" fill="url(#glow)"/><path d="m675 387 60-5 130 518H482L675 387Z" fill="url(#lamp)" opacity=".14"/>
+<g opacity=".88"><path d="m438 621 22-42h158l45 43 22 10v50H416v-45Z" fill="#121B21"/><path d="m469 590 28-28h100l24 29-152-1Z" fill="#243A40"/><path d="m501 567 86 0 20 21-126 0 20-21Z" fill="#446269" opacity=".5"/><rect x="435" y="641" width="44" height="11" rx="5" fill="#FFE7BB" opacity=".62"/><rect x="640" y="638" width="29" height="10" rx="5" fill="#E6A781" opacity=".54"/><circle cx="471" cy="677" r="24" fill="#0A1117"/><circle cx="624" cy="677" r="24" fill="#0A1117"/></g>
+<g transform="translate(824 541)"><ellipse cx="48" cy="294" rx="53" ry="12" fill="#000" opacity=".4"/><path d="M36 33c-8 13-9 36-5 44h34c6-22 3-40-5-49L36 33Z" fill="#0B141A"/><circle cx="47" cy="25" r="23" fill="#1C282B"/><path d="m16 98 26-26 27 1 23 21-5 133H13L16 98Z" fill="#0D181C"/><path d="m30 132-6 156h20l14-111 11 111h21L79 135H30Z" fill="#101B20"/><path d="M13 105 2 191l17 7 21-77-27-16ZM84 111l20 75-16 5-30-73 26-7Z" fill="#142329"/></g>
+<path d="M122 603c109-49 177-62 292-45" stroke="#A5BAB7" stroke-opacity=".16" stroke-width="4"/><path d="M950 609c98 5 176 31 250 68" stroke="#A5BAB7" stroke-opacity=".11" stroke-width="4"/>
+<ellipse cx="601" cy="588" rx="489" ry="42" fill="#A6B6B4" opacity=".07" filter="url(#fog)"/>
+<rect width="1200" height="900" fill="url(#foreground)"/>
+<g stroke="#DAE3DA" stroke-opacity=".13" stroke-width="1"><path d="m28 23-12 42M191 91l-11 31M245 10l-16 48M316 76l-18 48M470 33l-17 43M558 88l-8 28M674 34l-16 44M785 18l-8 30M981 28l-19 51M1150 60l-19 46M118 210l-10 37M570 226l-13 40M740 185l-9 37M1109 201l-17 41M38 500l-14 44M255 474l-16 41M486 532l-12 34M698 471l-17 39M911 513l-10 36M1035 529l-17 51M1180 476l-14 47M134 773l-21 62M365 733l-16 46M605 743l-17 58M934 733l-16 52M1086 806l-19 57"/></g>
+<rect width="1200" height="900" filter="url(#noise)" opacity=".6"/>
+</svg>

@@ -1,4 +1,5 @@
 """Job orchestration separates planning, compilation, packaging and future billing."""
+import json
 from .config import Settings
 from .godot import EngineError, GodotAdapter
 from .providers import ProviderError, get_provider
@@ -17,6 +18,7 @@ class JobService:
         try:
             plan = get_provider(job["provider"], self.settings.cli_timeout).generate(job["prompt"])
             folder = self.store.directory(job_id)
+            (folder / "game-plan.json").write_text(plan.model_dump_json(indent=2), encoding="utf-8")
             project = self.engine.generate(plan, folder)
             zip_path = self.engine.bundle(project, folder / "game-source.zip")
             outputs = {"title": plan.title, "source_zip": zip_path.name}

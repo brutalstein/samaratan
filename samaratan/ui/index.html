@@ -1,0 +1,102 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#0d100f">
+  <meta name="description" content="Samaratan — an agent-native cinematic game production studio. Direct the story. Build the playable world.">
+  <title>Samaratan — Director's Desk</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/assets/styles.css">
+  <script type="module" src="/assets/app.js"></script>
+</head>
+<body>
+  <div class="studio-shell" id="app">
+    <aside class="rail" aria-label="Main navigation">
+      <a href="#create" class="brand" data-route="create" aria-label="Samaratan Studio home">
+        <svg class="brand-mark" viewBox="0 0 40 40" fill="none" aria-hidden="true"><path d="M20 2 38 20 20 38 2 20 20 2Z" stroke="currentColor" stroke-width="1.2"/><path d="M20 9 30.5 20 20 31 9.5 20 20 9Z" fill="currentColor"/><path d="m20 15 5 5-5 5-5-5 5-5Z" fill="#101410"/></svg>
+        <span class="brand-name">samaratan<span class="brand-suffix">.ai</span></span>
+      </a>
+      <div class="rail-caption">CREATIVE ENVIRONMENT <span>01—04</span></div>
+      <nav class="rail-nav" id="nav">
+        <a class="nav-item is-active" href="#create" data-route="create" aria-current="page"><span class="nav-symbol">✳</span><span>Director's desk</span><span class="nav-index">01</span></a>
+        <a class="nav-item" href="#productions" data-route="productions"><span class="nav-symbol">▦</span><span>Productions</span><span class="nav-index">02</span></a>
+        <a class="nav-item" href="#workflow" data-route="workflow"><span class="nav-symbol">⌘</span><span>Workflow</span><span class="nav-index">03</span></a>
+        <a class="nav-item" href="#system" data-route="system"><span class="nav-symbol">◈</span><span>System status</span><span class="nav-index">04</span></a>
+      </nav>
+      <div class="rail-footer">
+        <div class="rail-divider"></div>
+        <div class="rail-meta">CURRENT ENVIRONMENT</div>
+        <div class="env-title"><span class="connection-dot" id="rail-status-dot"></span> Local workspace</div>
+        <p class="env-desc">Private by default. Your agent, your machine, your stories.</p>
+        <div class="rail-bottom"><span>STUDIO PREVIEW</span><span>v0.2</span></div>
+      </div>
+    </aside>
+
+    <div class="page-shell">
+      <header class="topbar">
+        <div class="breadcrumb"><span>SAMARATAN</span><span class="crumb-sep">/</span><span>STUDIO</span><span class="crumb-sep">/</span><strong id="breadcrumb-page">DIRECTOR'S DESK</strong></div>
+        <div class="topbar-actions">
+          <span class="server-state" id="server-state"><span class="connection-dot"></span><span id="connection-label">Checking workspace</span></span>
+          <button type="button" class="shortcut-button" id="shortcut-button" title="Focus the story brief"><span>QUICK BRIEF</span><kbd>⌘ K</kbd></button>
+          <div class="avatar" aria-label="Local studio profile">S</div>
+        </div>
+      </header>
+
+      <main id="main-content">
+        <section class="view is-active" id="view-create" aria-labelledby="create-heading">
+          <div class="section-intro intro-grid reveal">
+            <div class="intro-copy"><div class="overline"><span class="small-star">✳</span> THE DIRECTOR'S DESK <span class="overline-line"></span> NO. 001</div>
+              <h1 id="create-heading">Every great game<br>begins with <em>a feeling.</em></h1>
+              <p>Set the scene. Shape the choices. We'll turn your direction into the foundations of a playable world.</p>
+              <div class="intro-note"><span class="note-icon">↗</span> From a single idea to an engine-ready narrative prototype.</div>
+            </div>
+            <div class="intro-seal" aria-hidden="true"><div class="seal-ring"><span>SAMARATAN<br>STORY DEPARTMENT<br>EST. 2026</span><b>✳</b></div></div>
+          </div>
+
+          <div class="director-layout reveal delay-1">
+            <section class="brief-panel panel-surface" aria-labelledby="brief-title">
+              <div class="panel-head"><div class="kicker">01 <span>—</span> THE BRIEF</div><span class="tiny-status"><span class="tiny-amber"></span> AWAITING DIRECTION</span></div>
+              <h2 id="brief-title">Tell us what<br><i>you imagine.</i></h2>
+              <p class="panel-description">Start with a moment, a character, or a whole world. There are no wrong first drafts.</p>
+              <form id="create-form">
+                <label class="field-label" for="prompt">YOUR STORY PREMISE <span>MAX 6,000 CHARACTERS</span></label>
+                <div class="prompt-field"><textarea id="prompt" name="prompt" required minlength="8" maxlength="6000" spellcheck="true" placeholder="It begins in a forgotten coastal town. At midnight, a detective returns to a crime scene she thought was closed...">A rain-soaked detective thriller. The protagonist arrives at a deserted crime scene at midnight, interviews an unreliable witness, and must decide where to look for evidence.</textarea><div class="prompt-bottom"><span class="prompt-hint">✳ &nbsp; Write naturally — details become direction</span><output id="char-count" for="prompt">0 / 6000</output></div></div>
+                <div class="brief-presets"><div class="field-label">OR START WITH A SPARK</div><div class="presets" id="presets"><button type="button" class="preset" data-preset="noir"><span class="preset-glyph">◐</span> Neo-noir mystery <span>↗</span></button><button type="button" class="preset" data-preset="scifi"><span class="preset-glyph">✦</span> Sci-fi discovery <span>↗</span></button><button type="button" class="preset" data-preset="horror"><span class="preset-glyph">◈</span> Psychological thriller <span>↗</span></button></div></div>
+                <div class="brief-bottom"><div class="provider-wrap"><label class="field-label" for="provider">AI DIRECTOR</label><div class="select-shell"><select id="provider" name="provider" aria-describedby="provider-note"><option value="demo">Demo director · Free</option><option value="codex">Codex · Your subscription</option><option value="claude">Claude Code · Your subscription</option></select><span class="select-chevron">⌄</span></div><p id="provider-note">Free demo uses a sample story. No model calls or credits.</p></div>
+                <div class="export-toggle"><label class="toggle-line" for="export"><span>Build Windows .exe</span><span class="toggle"><input type="checkbox" id="export" name="export"><span class="toggle-track"></span></span></label><p id="export-note">Requires Godot on the build machine.</p></div></div>
+                <div class="action-bar"><div class="action-meta"><span class="action-index">✳</span><span>STAGE 01 OF 04<br><strong>PREPRODUCTION</strong></span></div><button class="launch-button" type="submit" id="submit"><span id="submit-label">Begin production</span><span class="launch-arrow" aria-hidden="true">↗</span></button></div>
+              </form>
+            </section>
+            <section class="concept-panel panel-surface" aria-label="Creative direction mood board">
+              <div class="visual-stage"><img class="scene-art" src="/assets/noir-scene.svg" alt="Atmospheric illustrated nighttime city street with a detective, concept art" width="1200" height="900"><div class="visual-noise" aria-hidden="true"></div><div class="visual-corner top-left"></div><div class="visual-corner top-right"></div><div class="visual-corner bottom-left"></div><div class="visual-corner bottom-right"></div><div class="visual-top"><span class="film-pip"></span> ART DIRECTION <span class="visual-top-right">REF. 01 / 03</span></div><div class="visual-bottom"><span class="film-label">A city that keeps its secrets.</span><span class="visual-sub">VISUAL MOOD STUDY — NOT GENERATED GAMEPLAY</span></div><div class="frame-bars" aria-hidden="true"></div></div>
+              <div class="concept-footer"><div><div class="kicker">THE MOODBOARD</div><h3>See the atmosphere.<br><i>Feel the story.</i></h3></div><div class="concept-nav"><span>01 — 03</span><span class="concept-lines"><i></i><i></i><i></i></span></div></div>
+            </section>
+          </div>
+
+          <section class="workflow-strip reveal delay-2" aria-labelledby="journey-heading"><div class="strip-title"><span class="kicker">THE CREATIVE JOURNEY</span><h2 id="journey-heading">A clearer path from <i>what if</i> to <i>what's next.</i></h2></div><div class="strip-steps"><div class="strip-step"><span>01</span><strong>Imagine</strong><small>Creative brief</small></div><div class="strip-step"><span>02</span><strong>Architect</strong><small>Branching story</small></div><div class="strip-step"><span>03</span><strong>Construct</strong><small>Engine project</small></div><div class="strip-step"><span>04</span><strong>Deliver</strong><small>Download & build</small></div></div></section>
+        </section>
+
+        <section class="view" id="view-productions" aria-labelledby="productions-heading">
+          <div class="standard-head reveal"><div class="overline">THE ARCHIVE <span class="overline-line"></span> 02 / 04</div><h1 id="productions-heading">The stories <em>taking shape.</em></h1><p>Every production begins as a premise. Revisit the work, inspect its structure, and retrieve the actual outputs.</p></div>
+          <div class="archive-bar"><span>LOCAL PRODUCTION ARCHIVE</span><button id="refresh-jobs" class="text-button" type="button">↻ &nbsp; Refresh archive</button></div>
+          <div id="jobs-list" class="jobs-list" aria-live="polite"><div class="empty-state"><span class="empty-symbol">◇</span><strong>No productions yet</strong><p>Your first project will appear here after you begin production.</p><button class="quiet-button" type="button" data-go="create">Create a production ↗</button></div></div>
+          <section id="job-inspector" class="inspector panel-surface" hidden><div class="inspector-top"><div><div class="kicker">PRODUCTION RECORD</div><h2 id="inspector-title">Story title</h2></div><button type="button" class="icon-button" id="close-inspector" aria-label="Close production details">×</button></div><div id="inspector-body"></div></section>
+        </section>
+
+        <section class="view" id="view-workflow" aria-labelledby="workflow-heading"><div class="standard-head reveal"><div class="overline">THE METHOD <span class="overline-line"></span> 03 / 04</div><h1 id="workflow-heading">Craft, with <em>structure.</em></h1><p>The production pipeline is deliberate: validate the narrative, generate engine sources, then package only when a real build worker is available.</p></div><div class="method-grid"><article class="method-card"><span>01 / DIRECTION</span><div class="method-symbol">✳</div><h2>Write the impossible.</h2><p>Give your director a premise. Choose your locally authenticated Codex or Claude agent, or the free deterministic demo.</p></article><article class="method-card"><span>02 / STORY DNA</span><div class="method-symbol">◇</div><h2>Find the story's shape.</h2><p>Convert text into a validated, versioned GamePlan with reachable scenes, characters, and branching choices.</p></article><article class="method-card"><span>03 / CONSTRUCTION</span><div class="method-symbol">▦</div><h2>Make it tangible.</h2><p>Generate a genuine Godot source project. A future cinematic engine adapter can be added without replacing the story contract.</p></article><article class="method-card"><span>04 / DELIVERY</span><div class="method-symbol">↗</div><h2>Bring it into the world.</h2><p>Download source now. A native Windows build is only offered when a configured engine and export templates actually complete it.</p></article></div><div class="honesty-note"><span>✳</span><p><strong>An honest preview.</strong> Samaratan currently produces narrative prototype sources, not photorealistic AAA games. The visual direction shown in the studio is concept artwork.</p></div></section>
+
+        <section class="view" id="view-system" aria-labelledby="system-heading"><div class="standard-head reveal"><div class="overline">THE CONTROL ROOM <span class="overline-line"></span> 04 / 04</div><h1 id="system-heading">Everything <em>in its place.</em></h1><p>See what's running on your machine, which agents are available, and what can be shipped today.</p></div><div class="system-grid" id="system-cards"><div class="system-card"><span>CHECKING THE ENVIRONMENT</span><p>Reading local capabilities…</p></div></div><button type="button" class="quiet-button system-refresh" id="refresh-system">↻ &nbsp; Check again</button></section>
+      </main>
+      <footer class="footer"><span>© SAMARATAN STUDIO — MADE FOR WORLDS NOT YET WRITTEN</span><span>LOCAL PREVIEW <span class="footer-dot">·</span> NO CREDITS REQUIRED</span></footer>
+    </div>
+  </div>
+
+  <section class="production-overlay" id="production-overlay" role="dialog" aria-modal="true" aria-labelledby="overlay-heading" aria-describedby="overlay-description" hidden>
+    <div class="overlay-backdrop"></div><div class="overlay-card"><div class="overlay-heading"><span class="kicker">PRODUCTION IN PROGRESS</span><button class="icon-button" type="button" id="overlay-dismiss" aria-label="Dismiss production overlay">×</button></div><div class="overlay-orbit" aria-hidden="true"><div class="orbit-outer"></div><div class="orbit-inner">✳</div></div><h2 id="overlay-heading">Giving your idea <i>form.</i></h2><p id="overlay-description">Preparing a local production job…</p><div class="progress-timeline"><div class="progress-row" data-stage="queued"><span>01</span><strong>Receiving direction</strong><i>—</i></div><div class="progress-row" data-stage="running"><span>02</span><strong>Architecting your story</strong><i>—</i></div><div class="progress-row" data-stage="succeeded"><span>03</span><strong>Preparing the deliverables</strong><i>—</i></div></div><div id="overlay-error" class="overlay-error" hidden></div><div class="overlay-actions" id="overlay-actions"><button type="button" class="quiet-button" id="overlay-view-archive">View productions ↗</button></div></div>
+  </section>
+  <div id="toast" class="toast" role="status" aria-live="polite" hidden></div>
+</body>
+</html>

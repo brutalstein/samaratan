@@ -58,6 +58,25 @@ class Store:
             raise NotFound("Job not found")
         return dict(result)
 
+    def recent(self, limit: int = 30) -> list[dict]:
+        """Recent productions for the local archive, capped to avoid unbounded responses."""
+        if not 1 <= limit <= 100:
+            raise ValueError("Invalid recent jobs limit")
+        with self._connect() as db:
+            rows = db.execute("SELECT * FROM jobs ORDER BY created_at DESC, rowid DESC LIMIT ?", (limit,)).fetchall()
+        return [dict(row) for row in rows]
+
+    def plan(self, job_id: str) -> Path:
+        """Read only successfully produced, fixed-name game plans; never trust user filenames."""
+        job = self.get(job_id)
+        if job["status"] != "succeeded":
+            raise NotFound("Story plan not ready")
+        directory = (self.root / "jobs" / job_id).resolve()
+        file = directory / "game-plan.json"
+        if file.is_symlink() or not file.is_file() or not file.resolve().is_relative_to(directory):
+            raise NotFound("Story plan not available")
+        return file
+
     def update(self, job_id: str, status: str, **fields: str | None) -> dict:
         if status not in {"running", "succeeded", "failed"}:
             raise ValueError("Invalid job state")
