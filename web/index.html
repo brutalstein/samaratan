@@ -1,0 +1,108 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="color-scheme" content="dark" />
+<title>Samaratan Studio — Your story. A playable world.</title>
+<style>
+:root{font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;background:#090c11;color:#e9edf2;font-synthesis:none}
+*{box-sizing:border-box}body{margin:0;min-height:100vh;background:radial-gradient(ellipse at 66% -8%,#203840 0,transparent 44%),#090c11}button,textarea,select{font:inherit}
+.shell{min-height:100vh;display:grid;grid-template-columns:255px minmax(0,1fr)}.sidebar{border-right:1px solid #252b31;background:#0d1116;padding:29px 18px;display:flex;flex-direction:column;gap:28px}
+.brand{display:flex;align-items:center;gap:11px;font-size:17px;font-weight:740;letter-spacing:-.04em;padding:0 12px}.mark{width:30px;height:30px;border-radius:9px;display:grid;place-items:center;background:#c5edc9;color:#10281e;font-weight:900;font-size:21px}
+.nav-label{font-size:10px;font-weight:700;letter-spacing:.18em;color:#6c7c85;margin:7px 12px 13px}.nav-link{padding:12px;border-radius:10px;font-size:13px;color:#8e9aa4;display:flex;align-items:center;gap:11px}.nav-link.active{background:#1d302a;color:#d7f7db;font-weight:650}.nav-dot{width:7px;height:7px;background:#9cdbac;border-radius:50%}.sidebar-bottom{margin-top:auto;border-top:1px solid #262c32;padding:20px 12px 0}.tag{display:inline-block;font-size:10px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:#b5e5c1;border:1px solid #345344;padding:6px 9px;border-radius:99px}.muted{color:#82909c}.tiny{font-size:11px;line-height:1.6}.main{min-width:0;padding:28px clamp(22px,5vw,80px) 70px}.topbar{display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid #273137;padding-bottom:21px;font-size:12px;color:#85949d}.status-indicator{display:flex;align-items:center;gap:9px}.pulse{height:8px;width:8px;background:#9ddfa9;border-radius:50%;box-shadow:0 0 16px #a6e9af80}
+.hero{padding:72px 0 39px;max-width:880px}.eyebrow{font-size:11px;letter-spacing:.24em;text-transform:uppercase;color:#a8d8ae;font-weight:800;margin-bottom:24px}h1{font-size:clamp(42px,6.1vw,82px);letter-spacing:-.075em;line-height:1.02;font-weight:620;margin:0;max-width:900px}h1 em{font-style:normal;color:#a8d9b3}.intro{font-size:15px;line-height:1.8;color:#9ba7b0;max-width:595px;margin-top:22px}
+.workspace{display:grid;grid-template-columns:minmax(0,1.5fr) minmax(270px,.8fr);gap:20px;max-width:1220px}.panel{border:1px solid #2b343b;background:#10161b;border-radius:18px;padding:27px;box-shadow:0 12px 45px #0002}.panel-header{display:flex;justify-content:space-between;align-items:center;gap:15px;margin-bottom:20px}.panel-title{font-weight:690;font-size:15px;letter-spacing:-.03em}.number{font-size:11px;color:#7e9d91;letter-spacing:.1em}label{font-size:11px;font-weight:750;text-transform:uppercase;letter-spacing:.12em;color:#94a49e;display:block;margin-bottom:9px}textarea{width:100%;min-height:180px;resize:vertical;border:1px solid #374149;border-radius:12px;padding:17px;background:#0c1115;color:#eef4ef;outline:none;line-height:1.65;font-size:14px}textarea:focus,select:focus{border-color:#aad6b7;box-shadow:0 0 0 3px #9eddac1f}textarea::placeholder{color:#687780}.control-row{display:flex;gap:15px;align-items:end;margin-top:20px;flex-wrap:wrap}.control{flex:1;min-width:175px}select{width:100%;background:#111b1b;color:#e0ebe3;border:1px solid #354640;border-radius:10px;padding:12px}.checkline{display:flex;align-items:center;gap:8px;text-transform:none;letter-spacing:normal;font-size:12px;margin:0;cursor:pointer;white-space:nowrap}.checkline input{accent-color:#acddb7}button.primary{border:0;border-radius:11px;background:#c3eccb;color:#10271a;padding:14px 21px;font-size:13px;font-weight:800;cursor:pointer;transition:.15s transform,.15s background}button.primary:hover{background:#e3ffe7;transform:translateY(-1px)}button:disabled{opacity:.55;cursor:not-allowed}.action-row{margin-top:22px;display:flex;align-items:center;gap:18px}.small-note{color:#81918f;font-size:11px;line-height:1.6}.feature{padding:16px 0;border-bottom:1px solid #263038;display:flex;gap:14px}.feature:last-child{border-bottom:0}.icon-box{width:33px;height:33px;border:1px solid #3a5147;border-radius:9px;color:#a2dfaf;display:grid;place-items:center;font-size:15px;flex-shrink:0}.feature strong{font-size:13px}.feature p{color:#84939e;font-size:12px;line-height:1.65;margin:5px 0 0}.result{max-width:1220px;margin-top:20px;border:1px solid #32453b;background:#101915;border-radius:15px;padding:21px 25px;display:none}.result.visible{display:block}.result strong{color:#dcf4e3}.result p{font-size:13px;color:#a0b0aa}.result a{display:inline-block;color:#b7eac2;font-size:13px;margin-right:22px;margin-top:8px}.footnote{color:#66777c;font-size:11px;margin-top:30px;line-height:1.7}
+@media(max-width:1070px){.workspace{grid-template-columns:1fr}.sidebar{width:205px}.shell{grid-template-columns:205px minmax(0,1fr)}}
+@media(max-width:720px){.shell{display:block}.sidebar{padding:15px 20px;gap:0;flex-direction:row;align-items:center;justify-content:space-between;border-right:0;border-bottom:1px solid #283038}.nav-label,.nav-link,.sidebar-bottom{display:none}.main{padding:23px}.hero{padding-top:46px}h1{font-size:45px}.workspace{display:block}.panel{margin-bottom:15px;padding:22px}.topbar{font-size:11px}}
+</style>
+</head>
+<body>
+<div class="shell">
+  <aside class="sidebar" aria-label="Primary navigation">
+    <div class="brand"><span class="mark">S</span> samaratan<span style="color:#a6d8b0">.ai</span></div>
+    <nav><div class="nav-label">WORKSPACE</div><div class="nav-link active"><span class="nav-dot"></span> Create game</div><div class="nav-link">◇ &nbsp; Engine adapters</div><div class="nav-link">◎ &nbsp; Agent providers</div></nav>
+    <div class="sidebar-bottom"><span class="tag">Developer Preview</span><p class="tiny muted">Local-first. No GPU cloud, credits, or external API keys required for demo mode.</p></div>
+  </aside>
+  <main class="main">
+    <div class="topbar"><div>SAMARATAN / STUDIO / CREATE</div><div class="status-indicator"><span class="pulse"></span><span id="connection">Checking local service</span></div></div>
+    <section class="hero"><div class="eyebrow">THE AI-NATIVE GAME PRODUCTION WORKSPACE</div><h1>Your story.<br><em>A playable world.</em></h1><p class="intro">Direct your first cinematic game prototype with natural language. Create a structured story, generate a real engine project, and package native games as the build system evolves.</p></section>
+    <section class="workspace" aria-label="Game creator">
+      <div class="panel"><div class="panel-header"><div class="panel-title">New production</div><div class="number">01 / DIRECT</div></div>
+        <form id="create-form"><label for="prompt">Describe your world and story</label><textarea id="prompt" required minlength="8" maxlength="6000" placeholder="A rain-soaked detective thriller. The protagonist arrives at a deserted crime scene at midnight, interviews an unreliable witness, and must decide where to look for evidence...">A rain-soaked detective thriller. The protagonist arrives at a deserted crime scene at midnight, interviews an unreliable witness, and must decide where to look for evidence.</textarea>
+        <div class="control-row"><div class="control"><label for="provider">AI director</label><select id="provider"><option value="demo">Deterministic demo (free)</option><option value="codex">Codex — connected CLI</option><option value="claude">Claude Code — connected CLI</option></select></div><label class="checkline"><input type="checkbox" id="export"/> Export Windows .exe</label></div>
+        <div class="action-row"><button class="primary" id="submit" type="submit">Generate production →</button><span class="small-note">Always free in demo mode. Windows export requires Godot 4 + export templates on the machine running this server.</span></div></form>
+      </div>
+      <div class="panel"><div class="panel-header"><div class="panel-title">Production pipeline</div><div class="number">02 / BUILD</div></div>
+        <div class="feature"><div class="icon-box">✧</div><div><strong>Story architecture</strong><p>Scene graph, branching dialogue and character roles are validated before compilation.</p></div></div>
+        <div class="feature"><div class="icon-box">▦</div><div><strong>Engine-independent contract</strong><p>Portable GamePlan JSON drives replaceable engine adapters.</p></div></div>
+        <div class="feature"><div class="icon-box">⌘</div><div><strong>Native game packaging</strong><p>Download a real Godot project. Optional Windows .exe requires a local build worker.</p></div></div>
+        <div class="feature"><div class="icon-box">✓</div><div><strong>Testable by design</strong><p>No hidden third-party model calls, no mandatory credits, no Unreal installation.</p></div></div>
+      </div>
+    </section>
+    <section id="result" class="result" role="status" aria-live="polite"><strong id="result-title">Preparing your production…</strong><p id="result-message"></p><div id="downloads"></div></section>
+    <p class="footnote">Developer preview · A generated Godot narrative prototype is not a photorealistic AAA game. The professional cinematic asset pipeline and Unreal integration are future adapters, not completed features.</p>
+  </main>
+</div>
+<script>
+const $ = (id) => document.getElementById(id);
+const button = $('submit');
+const result = $('result');
+const sleep = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
+const capabilities = async () => {
+  try {
+    const response = await fetch('/api/capabilities');
+    if (!response.ok) throw new Error('Offline');
+    const info = await response.json();
+    $('connection').textContent = 'Local service online';
+    for (const option of $('provider').options) {
+      if (option.value !== 'demo' && !info.providers[option.value]) {
+        option.disabled = true;
+        option.textContent += ' (CLI unavailable)';
+      }
+    }
+  } catch { $('connection').textContent = 'Service unavailable'; }
+};
+function show(status, message) {
+  result.classList.add('visible');
+  $('result-title').textContent = status;
+  $('result-message').textContent = message;
+}
+function downloadLink(label, href) {
+  const link = document.createElement('a');
+  link.href = href;
+  link.textContent = label + ' ↗';
+  $('downloads').appendChild(link);
+}
+$('create-form').addEventListener('submit', async (event) => {
+  event.preventDefault();
+  button.disabled = true;
+  $('downloads').replaceChildren();
+  show('Planning production…', 'A local job is being created.');
+  try {
+    const response = await fetch('/api/jobs', {method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({prompt:$('prompt').value,provider:$('provider').value,export_windows:$('export').checked})});
+    const data = await response.json();
+    if (!response.ok) throw new Error(typeof data.detail === 'string' ? data.detail : 'Could not create job');
+    for (let i=0;i<300;i++) {
+      const poll = await fetch('/api/jobs/' + encodeURIComponent(data.id));
+      if (!poll.ok) throw new Error('Unable to retrieve job status');
+      const job = await poll.json();
+      show('Production ' + job.status, job.title || 'Generating a validated GamePlan and engine project…');
+      if (job.status === 'succeeded') {
+        show('Production complete — ' + job.title, 'Download the engine source. Windows builds are shown only when a real executable exists.');
+        if (job.source_zip) downloadLink('Download game source ZIP', '/api/jobs/' + job.id + '/source');
+        if (job.windows_exe) downloadLink('Download Windows game .exe', '/api/jobs/' + job.id + '/windows');
+        return;
+      }
+      if (job.status === 'failed') throw new Error(job.error || 'Build failed');
+      await sleep(900);
+    }
+    throw new Error('Job is taking longer than expected. Try refreshing the status later.');
+  } catch (error) {
+    show('Production failed', error.message || String(error));
+  } finally {button.disabled = false;}
+});
+capabilities();
+</script>
+</body>
+</html>
